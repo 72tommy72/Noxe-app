@@ -1,0 +1,19 @@
+a .Twitter {
+    text-decoration: none;
+    color: white;
+}
+
+.Spotify {
+    text-decoration: none;
+    color: green;
+}
+
+a .Youtube {
+    text-decoration: none;
+    color: red;
+}
+
+a .Facebook {
+    text-decoration: none;
+    color: blue;
+}
