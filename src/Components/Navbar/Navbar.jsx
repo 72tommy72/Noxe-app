@@ -48,7 +48,7 @@ export default function Navbar({userLoggedIn ,logout}) {
                 <ul className="navbar-nav  ">
                     <div className="input-group ">
                     <div id="search-autocomplete" className="form-outline" data-mdb-input-init>
-                    <input placeholder='Search' type="search" id="form1" className="form-control" />
+                    <input placeholder='Search' type="search" id="form1" className="form-control ms-5" />
                         
                     </div>
                     </div>
