@@ -25,7 +25,7 @@ function App() {
     function logout(){
         localStorage.removeItem('token')
         setLoggedInUser(null)
-        // navigate("/login")
+        navigate("/login")
 
     }
     function ifUserLoggedIn(){
@@ -35,7 +35,7 @@ function App() {
     }
     useEffect(() => {
         ifUserLoggedIn()
-        // navigate('/login')
+        navigate('/login')
     }
     ,[])
     
@@ -51,7 +51,7 @@ function App() {
                 <h1>Please Go Home or Login First</h1>
 
             </div>
-            {navigate('login')}
+            {navigate('/login')}
             </>
         }
     }
