@@ -1,6 +1,6 @@
 import React from 'react'
 import css from './Navbar.module.css'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faSpotify,  faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
 // import { faFacebook ,faTwitter } from "@fortawesome/free-solid-svg-icons";
@@ -26,15 +26,15 @@ export default function Navbar({userLoggedIn ,logout}) {
                         <div className="right-links">
                             <ul className="navbar-nav ms-4">
                             <li className="nav-item active lead">
-                        <Link className="nav-link" to={'home'}>Home <span className="sr-only">(current)</span></Link>
+                        <NavLink className="nav-link" to={'home'}>Home <span className="sr-only">(current)</span></NavLink>
                     </li>
                                 {userLoggedIn ? (
                                     <>
                                         <li className="nav-item active lead">
-                                            <Link className="nav-link" to={'movies'}>Movies <span className="sr-only">(current)</span></Link>
+                                            <NavLink className="nav-link" to={'movies'}>Movies <span className="sr-only">(current)</span></NavLink>
                                         </li>
                                         <li className="nav-item active lead">
-                                            <Link className="nav-link" to={'tvs'}>Tvs <span className="sr-only">(current)</span></Link>
+                                            <NavLink className="nav-link" to={'tvs'}>Tvs <span className="sr-only">(current)</span></NavLink>
                                         </li>
                                     </>
                                 ) : (
@@ -44,43 +44,43 @@ export default function Navbar({userLoggedIn ,logout}) {
                         </div>
                     </div>
                     <div className="col-sm-6">
-                    <div className="lift-links ">
+                    <div className="left-links">
                 <ul className="navbar-nav  ">
-                    <div className="input-group ">
+                    <div className="input-group ms-5">
                     <div id="search-autocomplete" className="form-outline" data-mdb-input-init>
-                    <input placeholder='Search' type="search" id="form1" className="form-control ms-5" />
+                    <input placeholder='Search' type="search" id="form1" className="form-control " />
                         
                     </div>
                     </div>
                     <li className="nav-item fa-lg  ">
-                    <Link  to='https://www.facebcook.com' target='_blank'>
+                    <NavLink  to='https://www.facebcook.com' target='_blank'>
                         <FontAwesomeIcon className={`${css.Facebook} mt-1 me-3 fa-fw`} icon={faFacebook} />
-                    </Link>
+                    </NavLink>
                     </li>
                     <li className=" nav-item fa-lg white-anchor ">
-                    <Link  to='https://www.x.com' target='_blank'>
+                    <NavLink  to='https://www.x.com' target='_blank'>
                     <FontAwesomeIcon className={`${css.Twitter} mt-1 me-3 fa-fw`} icon={faXTwitter} />
-                    </Link>
+                    </NavLink>
                     </li>
                     <li className="nav-item fa-lg ">
-                        <Link to='https://www.spotify.com' target='_blank'>
+                        <NavLink to='https://www.spotify.com' target='_blank'>
                         <FontAwesomeIcon  className= {`${css.Spotify} mt-1 me-3 fa-fw`} icon={faSpotify} />
-                        </Link>
+                        </NavLink>
                     </li>
                     <li className="nav-item fa-lg ">
-                        <Link to='https://www.youtube.com' target='_blank'>
+                        <NavLink to='https://www.youtube.com' target='_blank'>
                         <FontAwesomeIcon className={`${css.Youtube} mt-1 me-3 fa-fw`}  icon={faYoutube} />
-                        </Link>
+                        </NavLink>
                     </li>
                     {userLoggedIn?<li onClick={logout} className="nav-item fa-lg">
-                    <Link className="nav-link m-1" to={'/home'}>Logout </Link>
+                    <NavLink className="nav-link m-1" to={'/home'}>Logout </NavLink>
                     </li>
                     :<>
                     <li className="nav-item fa-lg">
-                    <Link className="nav-link m-1" to={'login'}>Login </Link>
+                    <NavLink className="nav-link m-1" to={'login'}>Login </NavLink>
                     </li>
                     <li className="nav-item fa-lg">
-                    <Link className="nav-link m-1" to={'register'}>Register </Link>                    
+                    <NavLink className="nav-link m-1" to={'register'}>Register </NavLink>                    
                     </li>
                     </>
                     }
