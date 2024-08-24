@@ -58,7 +58,8 @@ function App() {
     return <>
 
 
-        {/* <ApiContextProvider>
+        {/* <ApiContextProvider> */}
+        <Navbar logout={logout}  userLoggedIn={loggedInUser}/>
             <Routes>
                     <Route path="login" element={<Login decoded={getToken}/>} />
                     <Route path="register" element={<Register />} />
@@ -74,11 +75,11 @@ function App() {
                         <Route path=":id" element={<TvDetails />} />
                     </Route>
                 </Routes>
-        </ApiContextProvider> */}
-        <Navbar logout={logout}  userLoggedIn={loggedInUser}/>
+        {/* </ApiContextProvider>  */}
+        {/* <Navbar logout={logout}  userLoggedIn={loggedInUser}/> */}
 
         {/* <ApiContextProvider> */}
-            <Routes>
+            {/* <Routes>
                 <Route path="login" element={<Login decoded={getToken}/>} />
                 <Route path="register" element={<Register />} />
                 <Route path="*" element={<><div className='vh-100 d-flex justify-content-center align-items-center  '><h1> 4 0 4</h1></div> </>} />
@@ -92,7 +93,7 @@ function App() {
                 <Route path="tvdetails" element={<TvDetails />} >
                         <Route path=":id" element={<TvDetails />} />
                 </Route>
-            </Routes>
+            </Routes> */}
         {/* </ApiContextProvider> */}
 
     </> 

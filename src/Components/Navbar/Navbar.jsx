@@ -11,7 +11,9 @@ export default function Navbar({userLoggedIn ,logout}) {
             
             <div className="collapse navbar-collapse me-5" id="navbarSupportedContent">
                 <div className="row  w-100">
-                {/* <ul className="navbar-nav ms-4">
+                    <div className="col-sm-6">
+                        <div className="right-links">
+                <ul className="navbar-nav ms-4">
                     <li className="nav-item active lead">
                         <Link className="nav-link" to={'home'}>Home <span className="sr-only">(current)</span></Link>
                     </li>
@@ -21,10 +23,8 @@ export default function Navbar({userLoggedIn ,logout}) {
                     <li className="nav-item active lead">
                         <Link className="nav-link" to={'tvs'}>Tvs <span className="sr-only">(current)</span></Link>
                     </li>
-                </ul> */}
-                    <div className="col-sm-6">
-                        <div className="right-links">
-                            <ul className="navbar-nav ms-4">
+                </ul>
+                            {/* <ul className="navbar-nav ms-4">
                             <li className="nav-item active lead">
                         <NavLink className="nav-link" to={'home'}>Home <span className="sr-only">(current)</span></NavLink>
                     </li>
@@ -40,7 +40,7 @@ export default function Navbar({userLoggedIn ,logout}) {
                                 ) : (
                                     ""
                                 )}
-                            </ul>
+                            </ul> */}
                         </div>
                     </div>
                     <div className="col-sm-6">
