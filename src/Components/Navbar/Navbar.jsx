@@ -10,8 +10,8 @@ export default function Navbar({userLoggedIn ,logout}) {
             <Link className="navbar-brand ms-5  lead" to={'home'}>Noxe</Link>
             
             <div className="collapse navbar-collapse me-5" id="navbarSupportedContent">
-                
-                <ul className="navbar-nav ms-4">
+                <div className="row  w-100">
+                {/* <ul className="navbar-nav ms-4">
                     <li className="nav-item active lead">
                         <Link className="nav-link" to={'home'}>Home <span className="sr-only">(current)</span></Link>
                     </li>
@@ -21,32 +21,40 @@ export default function Navbar({userLoggedIn ,logout}) {
                     <li className="nav-item active lead">
                         <Link className="nav-link" to={'tvs'}>Tvs <span className="sr-only">(current)</span></Link>
                     </li>
-                </ul>
-                
-                {/* {userLoggedIn
-                ?<ul className="navbar-nav ms-4">
-                    <li className="nav-item active lead">
+                </ul> */}
+                    <div className="col-sm-6">
+                        <div className="right-links">
+                            <ul className="navbar-nav ms-4">
+                            <li className="nav-item active lead">
                         <Link className="nav-link" to={'home'}>Home <span className="sr-only">(current)</span></Link>
                     </li>
-                    <li className="nav-item active lead">
-                        <Link className="nav-link" to={'movies'}>Movies <span className="sr-only">(current)</span></Link>
-                    </li>
-                    <li className="nav-item active lead">
-                        <Link className="nav-link" to={'tvs'}>Tvs <span className="sr-only">(current)</span></Link>
-                    </li>
-                </ul>
-                :""} */}
-                
-                <ul className="navbar-nav ms-auto  ">
+                                {userLoggedIn ? (
+                                    <>
+                                        <li className="nav-item active lead">
+                                            <Link className="nav-link" to={'movies'}>Movies <span className="sr-only">(current)</span></Link>
+                                        </li>
+                                        <li className="nav-item active lead">
+                                            <Link className="nav-link" to={'tvs'}>Tvs <span className="sr-only">(current)</span></Link>
+                                        </li>
+                                    </>
+                                ) : (
+                                    ""
+                                )}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="col-sm-6">
+                    <div className="lift-links ">
+                <ul className="navbar-nav  ">
                     <div className="input-group ">
-                    <div id="search-autocomplete" className="form-outline d-flex" data-mdb-input-init>
+                    <div id="search-autocomplete" className="form-outline" data-mdb-input-init>
                     <input placeholder='Search' type="search" id="form1" className="form-control" />
                         
                     </div>
                     </div>
                     <li className="nav-item fa-lg  ">
                     <Link  to='https://www.facebcook.com' target='_blank'>
-                        <FontAwesomeIcon className={`${css.Facebook} mt-1 me-3 ms-4 fa-fw`} icon={faFacebook} />
+                        <FontAwesomeIcon className={`${css.Facebook} mt-1 me-3 fa-fw`} icon={faFacebook} />
                     </Link>
                     </li>
                     <li className=" nav-item fa-lg white-anchor ">
@@ -77,6 +85,9 @@ export default function Navbar({userLoggedIn ,logout}) {
                     </>
                     }
                 </ul>
+                </div>
+                    </div>
+                </div>
             </div>
         </nav>
     </>

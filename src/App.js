@@ -51,7 +51,7 @@ function App() {
                 <h1>Please Go Home or Login First</h1>
 
             </div>
-            {navigate('/login')}
+            {navigate('login')}
             </>
         }
     }

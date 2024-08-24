@@ -25,7 +25,7 @@ export default function MovieDetailes() {
                     <div className="details">
                         <h2>{movieDetails.original_title}</h2>
                         <p>{movieDetails.overview}</p>
-                        {movieDetails.genres?.map((genre ,idx)=>{return <span key={idx} className="mx-2 text-white btn btn-info "> {genre.name} </span>})}
+                        {movieDetails.genres?.map((genre ,idx)=>{return <span key={idx} className="mx-2 my-2 text-white btn btn-info "> {genre.name} </span>})}
                         <div className="">
                             <p className="mt-5 mb-3 lead  ">Vote : {movieDetails.vote_average}</p>
                             <p className="my-5 lead ">Vote_count : {movieDetails.vote_count}</p>
