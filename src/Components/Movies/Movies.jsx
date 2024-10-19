@@ -1,6 +1,7 @@
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, {  useEffect } from 'react'
+import AOS from "aos";
 import { Link } from 'react-router-dom';
 // import { MyApiContext } from '../../Context/ApiContext';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,6 +20,9 @@ export default function Movies() {
     useEffect(() => {
             dispatch(getTrendingMovies())
         }, [dispatch]);
+    useEffect(() => {
+        AOS.init({ duration: 1000 });  // Initialize AOS and set duration if needed
+    }, []);
     const movieApi = useSelector((state) => state.moviesApi)
 
     
@@ -45,10 +49,12 @@ export default function Movies() {
                     {movieApi.length !== 0 
                     ?movieApi.map((movie ,idx)=>{return <div key={idx } className="col-md-2">
                         <div className="movie">
-                            <Link to={`/moviedetails/${movie.id}`}>
-                                <img className="w-100" src={"https://images.tmdb.org/t/p/w500/"+movie.poster_path} alt="movie" />
-                                <h6 className="m-3">{movie.original_title}</h6>
-                            </Link>
+                            <div data-aos="fade-up">
+                                <Link to={`/moviedetails/${movie.id}`}>
+                                    <img className="w-100" src={"https://images.tmdb.org/t/p/w500/"+movie.poster_path} alt="movie" />
+                                    <h6 className="m-3">{movie.original_title}</h6>
+                                </Link>
+                            </div>
                         </div>
                     </div>})
                     :"something went wrong"}

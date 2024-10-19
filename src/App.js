@@ -10,7 +10,6 @@ import MovieDetailes from './Components/MovieDetails/MovieDetails.jsx';
 import {jwtDecode} from 'jwt-decode'
 import { useEffect, useState } from 'react';
 import TvDetails from './Components/TvDetails/TvDetails.jsx';
-
 import { ApiContextProvider } from './Context/ApiContext.js';
 import { store } from './Redux/Store.js';
 import { Provider } from 'react-redux';

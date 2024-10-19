@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import AOS from "aos";
 
 export default function MovieDetailes() {
     const [movieDetails, setMovieDetails] = useState({});
@@ -12,17 +13,23 @@ export default function MovieDetailes() {
     useEffect(() => {
         getMovieDetailsById()
     }, []);
+    useEffect(() => {
+        AOS.init({ duration: 1000 });  // Initialize AOS and set duration if needed
+    }, []);
     return (
         <>
         <div className="container mt-4">
             <div className="row">
                 <div className="col-md-4">
                     <div className="content">
-                        <img  className="w-100" src={"https://images.tmdb.org/t/p/w500/"+movieDetails.poster_path} alt="movie" />
+                        <div data-aos="fade-right">
+                            <img  className="w-100" src={"https://images.tmdb.org/t/p/w500/"+movieDetails.poster_path} alt="movie" />
+                        </div>
                     </div>
                 </div>
                 <div className="col-md-8">
-                    <div className="details">
+                    <div data-aos="fade-left">
+                        <div className="details">
                         <h2>{movieDetails.original_title}</h2>
                         <p>{movieDetails.overview}</p>
                         {movieDetails.genres?.map((genre ,idx)=>{return <span key={idx} className="m-2 text-white btn btn-info "> {genre.name} </span>})}
@@ -32,6 +39,7 @@ export default function MovieDetailes() {
                             <p className="my-5 lead ">Popularity: {movieDetails.popularity}</p>
                             <p className="my-5 lead ">{movieDetails.overview}</p>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
