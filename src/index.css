@@ -23,3 +23,12 @@ a {
     text-decoration: none!important;
     color: white !important;
 }
+
+a:hover {
+    color: rgba(60, 133, 243, 0.732) !important;
+}
+
+ul {
+    text-decoration: none;
+    list-style: none;
+}

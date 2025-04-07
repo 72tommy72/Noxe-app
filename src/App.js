@@ -1,5 +1,5 @@
 import './App.css';
-import Home from './Components/Home/Home.jsx'
+// import Home from './Components/Home/Home.jsx'
 import Navbar from './Components/Navbar/Navbar.jsx'
 import {Navigate, Route, Routes, useNavigate} from 'react-router-dom'
 import Login from './Components/Login/Login.jsx';
@@ -8,12 +8,14 @@ import Movies from './Components/Movies/Movies.jsx';
 import Tvs from './Components/Tvs/Tvs.jsx';
 import MovieDetailes from './Components/MovieDetails/MovieDetails.jsx';
 import {jwtDecode} from 'jwt-decode'
-import { useEffect, useState } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import TvDetails from './Components/TvDetails/TvDetails.jsx';
 import { ApiContextProvider } from './Context/ApiContext.js';
 import { store } from './Redux/Store.js';
 import { Provider } from 'react-redux';
+const Home = lazy(()=> import('./Components/Home/Home.jsx'))
 function App() {
+    
     const [loggedInUser, setLoggedInUser] = useState(null);
     const navigate = useNavigate()
     function getToken() {
@@ -76,7 +78,6 @@ function App() {
                 </Routes>
         {/* </ApiContextProvider>  */}
         {/* <Navbar logout={logout}  userLoggedIn={loggedInUser}/> */}
-
         {/* <ApiContextProvider> */}
             {/* <Routes>
                 <Route path="login" element={<Login decoded={getToken}/>} />
@@ -94,7 +95,6 @@ function App() {
                 </Route>
             </Routes> */}
         {/* </ApiContextProvider> */}
-
     </> 
 }
 

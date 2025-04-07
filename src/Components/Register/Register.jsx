@@ -14,20 +14,19 @@ export default function Register(){
         email: '',
         password: '',
         confirmPassword: '',
-        
     });
     const [ errorList, setErrorList] = useState([])
     const [APIError, setAPIError] = useState(null);
     const [clickedButton, setClickedButton] = useState(false);
 
     function userInfo(e){
-        setErrorList(null) 
-        setAPIError(null)
-        let idOfChangedInput = e.target.id
-        let inputValue = e.target.value
-        let newUser = {...user}
-        newUser[idOfChangedInput] = inputValue
-        setUser(newUser)    
+            setErrorList(null) 
+            setAPIError(null)
+            let idOfChangedInput = e.target.id
+            let inputValue = e.target.value
+            let newUser = {...user}
+            newUser[idOfChangedInput] = inputValue
+            setUser(newUser)    
     }
     function getSpecifiedError(key){
         if (errorList !== null ) {
@@ -44,7 +43,7 @@ export default function Register(){
         setClickedButton(true)
         e.preventDefault()
         const schema = Joi.object({
-            userName: Joi.string().max(30).min(3).required(),
+            userName: Joi.string().max(30).min(3).required(),   
             email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
             password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{6,30}$")).required(),
             confirmPassword: Joi.string().valid(Joi.ref("password")).required(),
@@ -70,8 +69,7 @@ export default function Register(){
             }        
         }else{
             let errorList = resultOfValidation.error.details
-                setErrorList(errorList) 
-                
+                setErrorList(errorList)
         }setClickedButton(false)
     }
     
@@ -117,8 +115,15 @@ export default function Register(){
                 {getSpecifiedError('confirmPassword')?<div className='alert alert-danger fa-sm mt-1'>{getSpecifiedError('confirmPassword')}</div>: ""}
 
                 <button onClick={submitMyForm} className="btn btn-outline-info mt-3">
-                {clickedButton === true ? <div ><FontAwesomeIcon className="fa-spin" icon={faSpinner } /></div> : 'Register' }
-                    </button>
+                    {clickedButton === true ? <div ><FontAwesomeIcon className="fa-spin" icon={faSpinner } /></div> : 'Register' }
+                </button>
+                <p 
+                    className="text-center mt-3"
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => navigate('/login')}
+                >
+                    Already have an account? <span className="text-info">Login</span>
+                </p>
             </div>
             </div>
         </form>

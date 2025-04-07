@@ -16,6 +16,7 @@ export default function Login(props) {
     const [errorList, setErrorList] = useState([]);
     const [APIError, setAPIError] = useState(null);
     const [clickedButton, setClickedButton] = useState(false);
+
     function userInfo(e) {
         setErrorList(null);
         let idOfChangedInput = e.target.id;
@@ -24,45 +25,7 @@ export default function Login(props) {
         newUser[idOfChangedInput] = inputValue;
         setUser(newUser);
     }
-    // function getSpecifiedError(key) {
-    //     if (errorList != null) {
-    //         for (let i = 0; i < errorList.length; i++) {
-    //             if (key == errorList[i].context.key) {
-    //                 return errorList[i].message
-    //             }
-    //         }
-    //         return '';
-    //     }
-    // }
 
-    // async function submitMyForm(e){
-    //     setClickedButton(true)
-    //     e.preventDefault()
-    //     const schema = Joi.object({
-    //         email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
-    //         password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")).required(),
-    //     })
-    //     const resultOfValidation = schema.validate(user , {abortEarly: false})
-    //     if (resultOfValidation.error === undefined) {
-    //         const {data} = await axios.post('https://graduation-project-an7d.onrender.com/auth/login', user)
-    //         console.log(data);
-    //         const userToken = data.token
-    //         localStorage.setItem('token', userToken)
-    //         props.decoded()
-    //         if ( data.success === true) {
-    //             $('.alert-success').fadeIn(1000).fadeOut(1000,function(){
-    //                 navigate("/home")
-    //             })
-    //         }else{
-    //         setAPIError(data.message)
-    //         }
-
-    //     }else{
-    //         let errorList = resultOfValidation.error.details
-    //             setErrorList(errorList)
-    //     }
-    //     setClickedButton(false)
-    // }
     function getSpecifiedError(key) {
         if (errorList != null) {
             for (let i = 0; i < errorList.length; i++) {
@@ -70,7 +33,7 @@ export default function Login(props) {
                     return errorList[i].message;
                 }
             }
-            return "";
+            return '';
         }
     }
 
@@ -78,70 +41,54 @@ export default function Login(props) {
         setClickedButton(true);
         e.preventDefault();
         const schema = Joi.object({
-            email: Joi.string().email({
-                minDomainSegments: 2,
-                tlds: { allow: ["com", "net"] },
-            }),
-            password: Joi.string()
-                .regex(/^[a-zA-Z0-9]{3,30}$/)
-                .required(),
+            email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
+            password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")).required(),
         });
-        try {
-            const resultOfValidation = await schema.validateAsync(user, {
-                abortEarly: false,
-            });
-            if (resultOfValidation.error === undefined) {
-                const response = await axios.post(
-                    "https://graduation-project-an7d.onrender.com/auth/login",
-                    user
-                );
-                const data = response.data;
+        const resultOfValidation = schema.validate(user, { abortEarly: false });
+        if (resultOfValidation.error === undefined) {
+            try {
+                const { data } = await axios.post('https://graduation-project-an7d.onrender.com/auth/login', user);
                 console.log(data);
                 const userToken = data.token;
-                localStorage.setItem("token", userToken);
+                localStorage.setItem('token', userToken);
                 props.decoded();
                 if (data.success === true) {
-                    $('.alert-success').fadeIn(1000).fadeOut(1000,function(){
-                        navigate("/home")
-                    })
+                    $('.alert-success').fadeIn(1000).fadeOut(1000, function () {
+                        navigate("/home");
+                    });
                 } else {
+                    $('.alert-danger').fadeIn(1000).fadeOut(1000);
                     setAPIError(data.message);
                 }
-            } else {
-                setErrorList(resultOfValidation.error.details);
-                setErrorList(errorList) 
+            } catch (error) {
+                $('.alert-danger').fadeIn(1000).fadeOut(1000);
+                setAPIError(error.response?.data?.message || "An error occurred");
             }
-        } catch (error) {
-            console.error(error);
-        } finally {
-            setClickedButton(false);
+        } else {
+            let errorList = resultOfValidation.error.details;
+            setErrorList(errorList);
         }
+        setClickedButton(false);
     }
 
     return (
         <>
             <form onSubmit={submitMyForm} action="">
-                {props.message === undefined ? (
-                    ""
-                ) : (
-                    <div className="alert alert-danger"></div>
-                )}
                 <div
                     style={{ display: "none" }}
                     className="alert alert-success text-center"
                 >
-                    {" "}
                     Login Succeeded
+                </div>
+                <div
+                    style={{ display: "none" }}
+                    className="alert alert-danger text-center"
+                >
+                    {APIError}
                 </div>
 
                 <div className="d-flex justify-content-center align-content-center mt-5">
                     <div className="w-50 mt-5">
-                        {APIError ? (
-                            <div className="alert alert-danger">{APIError}</div>
-                        ) : (
-                            ""
-                        )}
-                        {/* {errorList.length === 0 ?  "" :errorList.map((err, index) => (<div key={index} className='alert alert-danger'>{err.message}</div>)) }                */}
                         <h2 className="m-auto">Login</h2>
                         <div className="inputs">
                             <label htmlFor="email" className="form-label mt-3">
@@ -193,6 +140,13 @@ export default function Login(props) {
                                 "Login"
                             )}
                         </button>
+                        <p 
+                            className="text-center mt-3"
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => navigate('/register')}
+                        >
+                            Don't have an account? <span className="text-info">Register</span>
+                        </p>
                     </div>
                 </div>
             </form>

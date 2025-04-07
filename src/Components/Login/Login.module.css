@@ -1,0 +1,121 @@
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+}
+
+.loginForm {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.formHeader {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.formHeader h2 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.formHeader p {
+    color: #666;
+    font-size: 16px;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+.inputField {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.inputField:focus {
+    border-color: #667eea;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.errorText {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.errorMessage {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.successMessage {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.buttonContainer {
+    margin-top: 30px;
+}
+
+.loginButton {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.loginButton:hover {
+    transform: translateY(-2px);
+}
+
+.loginButton:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.registerLink {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+}
+
+.registerLink span {
+    color: #667eea;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.registerLink span:hover {
+    color: #764ba2;
+} 

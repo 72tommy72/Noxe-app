@@ -1,19 +1,194 @@
 a .Twitter {
     text-decoration: none;
     color: white;
+    font-size: 20px;
 }
 
 .Spotify {
     text-decoration: none;
     color: green;
+    font-size: 20px;
 }
 
 a .Youtube {
     text-decoration: none;
     color: red;
+    font-size: 20px;
 }
 
 a .Facebook {
     text-decoration: none;
-    color: blue;
+    color: #0000ff;
+    font-size: 20px;
+}
+
+.layer div a {
+    font-size: larger;
+}
+
+.layer {
+    /* display: none !important; */
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 333;
+    background-color: rgba(40, 40, 48, .9);
+    backdrop-filter: blur(4px);
+}
+
+.layer ul {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    background-color: #11212D;
+    /* margin: 0 auto; */
+    /* animation: myMove .7s 1;
+    -webkit-animation: myMove .7s 1; */
+}
+
+.layer ul li {
+    width: 50%;
+    margin: 0 auto;
+    padding: .6rem 0;
+}
+
+.layerLinks {
+    position: relative;
+}
+
+nav button {
+    position: absolute;
+    top: 5px;
+    right: 5%;
+    background-color: transparent;
+    color: white;
+    border: 1px #0000ff;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    border-radius: 20%;
+    -webkit-border-radius: 20%;
+    -moz-border-radius: 20%;
+    -ms-border-radius: 20%;
+    -o-border-radius: 20%;
+    box-shadow: 1px 1px 2px #0000ff;
+}
+
+.layer button {
+    position: absolute;
+    top: 50px;
+    right: 22%;
+    background-color: transparent;
+    color: white;
+    border: 1px #0000ff;
+    width: 2.5rem;
+    height: 2.5rem;
+    text-align: center;
+    border-radius: 20%;
+    -webkit-border-radius: 20%;
+    -moz-border-radius: 20%;
+    -ms-border-radius: 20%;
+    -o-border-radius: 20%;
+    box-shadow: 1px 1px 2px #0000ff;
+}
+
+
+/* 
+.layer ul li:last-child {
+    border-bottom: none;
+}
+
+.layer ul li:first-child {
+    border-bottom: none;
+    text-align: right;
+    padding-top: .2rem;
+    padding-bottom: 0rem;
+} */
+
+@media (width < 991.5px) {
+    nav div .row {
+        display: none !important;
+    }
+    nav div .layer {
+        display: inline-block !important;
+    }
+    nav button {
+        display: inline-block !important;
+    }
+}
+
+@media (width > 991.5px) {
+    nav div .row {
+        display: flex!important;
+    }
+    nav div .layer {
+        display: none !important;
+    }
+    nav button {
+        display: none !important;
+    }
+}
+
+.menuButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.mobileMenu {
+    display: none;
+    width: 100%;
+    background-color: #343a40;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.mobileMenu.show {
+    display: block;
+}
+
+@media (min-width: 991.5px) {
+    .mobileMenu {
+        display: block;
+        position: static;
+        background-color: transparent;
+        padding: 0;
+    }
+    
+    .menuButton {
+        display: none;
+    }
+}
+
+/* Social media icons colors */
+.Facebook {
+    color: #1877f2;
+}
+
+.Twitter {
+    color: #1da1f2;
+}
+
+.Spotify {
+    color: #1db954;
+}
+
+.Youtube {
+    color: #ff0000;
 }
